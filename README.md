@@ -1,8 +1,10 @@
 # Learning Cruxes to Push
 This repo is the official implementation of [Learning Cruxes to Push for Object Detection in
-Low-Quality Images](). It is based on [mmdetection](https://github.com/open-mmlab/mmdetection/tree/2.x) (v2.28.2).
+Low-Quality Images](https://ieeexplore.ieee.org/abstract/document/10606519). It is based on [mmdetection](https://github.com/open-mmlab/mmdetection/tree/2.x) (v2.28.2).
 ## Introduction
-In a low-quality image, false detection(negatives or positives) is more likely to occur in local regions. In this paper, we propose a simple yet effective strategy with
+> We also provide an introduction in Chinese [here](https://zhuanlan.zhihu.com/p/710798636).
+
+In a low-quality image, false detection (negatives or positives) is more likely to occur in local regions. In this paper, we propose a simple yet effective strategy with
 two learners to solve false detection. We devise the crux
 learner to generate cruxes that have great impacts on detection
 performance. The catch-up leaner with a simple residual transfer
@@ -31,8 +33,7 @@ We use Cityscapes as the detection-favored image set for both rainy and foggy sc
 
 - The URPC2020 dataset can be downloaded from [here]().
 - The DFUI dataset can be downloaded from [here]().
-- The synthesized Rainy-Cityscapes images can be downloaded from [here]().
-- The annotations of both Rainy and Foggy Cityscaptes can be downloaded from [here]().
+- The images and annotations of synthesized Rainy-Cityscapes can be downloaded from [here]() (Foggy-Cityscapes also uses these annotations).
 
 
 ![fig3](./assets/fig3.jpg)
@@ -71,7 +72,7 @@ pip install yapf==0.40.1 mmdet==2.28.2 future tensorboard
 ```
 To clone LCP, run:
 ```shell
-git clone
+git clone https://github.com/xiaoDetection/learning-cruxes-to-push.git
 cd learning-cruxes-to-push
 ```
 ### Data Preperation
@@ -90,10 +91,10 @@ learning-cruxes-to-push/
         dfui/
             images/
 ```
-All images are converted into JPEG format, and put into folders with the suffix 'images' with no subfolders.
+All images are converted into `jpg` format and stored in folders with the suffix 'images', with no subfolders included.
 
 
-### Test
+### Testing
 Here we take `LCP-50` on URPC2020 as an example.
 
 First download our checkpoint file to `checkpoints/lcp_r50_urpc.pth`:
@@ -122,7 +123,42 @@ python tools/train.py \
     configs/lcp_r50_urpc.py
 ```
 
+The results will be saved in `work_dirs/lcp_r50_urpc`. 
+
+### Training on a custom dataset
+Please convert your labels into COCO format and place your annotations and images into `data/` folder accoriding to the structure described [above](###Data_Preperation).
+
+Then, in the config file, modify `num_classes`, `img_prefix`, `img_df_prefix`, `train_ann`, `test_ann` and `classes` according to your dataset.
+- `num_classes` is the number of classes in your dataset.
+- `img_prefix` is the prefix of your  low-quality images.
+- `img_df_prefix` is the prefix of your detection-favored images.
+- `train_ann` is the path of your training annotations.
+- `classes` is the tuple of class names in your dataset.
+
+Then train a model:
+```shell
+python tools/train.py \
+    YOUR_CONFIG_FILE.py
+```
+
+The results will be saved in `work_dirs/YOUR_CONFIG_FILE`.
+
 **Notes:**
 - Config files of other scenes can be found in [configs/](configs/).
 - Other models can be found in section [Models and Results](#models-and-results).
 - For more information (e.g., about training on a custom dataset or modifying models), please refer to [MMDetection's documentation](https://mmdetection.readthedocs.io/en/v2.28.2/).
+
+## Citation
+```
+@ARTICLE{10606519,
+    author={Fu, Chenping and Xiao, Jiewen and Yuan, Wanqi and Liu, Risheng and Fan, Xin},
+    journal={IEEE Transactions on Circuits and Systems for Video Technology}, 
+    title={Learning Cruxes to Push for Object Detection in Low-Quality Images}, 
+    year={2024},
+    volume={},
+    number={},
+    pages={1-1},
+    keywords={Detectors;Feature extraction;Convolution;Accuracy;Training;Rain;Degradation;Object detection;low-quality scenes;image enhancement},
+    doi={10.1109/TCSVT.2024.3432580}
+}
+```

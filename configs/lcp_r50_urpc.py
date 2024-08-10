@@ -4,6 +4,7 @@ _base_ = [
     './_base_/schedules/schedule_2x.py', './_base_/default_runtime.py'
 ]
 
+num_classes = 4
 model = dict(
     type='LCPDetector',
     init_cfg=dict(type='Pretrained', checkpoint='./checkpoints/cascade_rcnn_r50_dfui.pth'),
@@ -24,7 +25,7 @@ model = dict(
                 in_channels=256,
                 fc_out_channels=1024,
                 roi_feat_size=7,
-                num_classes=4,
+                num_classes=num_classes,
                 bbox_coder=dict(
                     type='DeltaXYWHBBoxCoder',
                     target_means=[0., 0., 0., 0.],
@@ -41,7 +42,7 @@ model = dict(
                 in_channels=256,
                 fc_out_channels=1024,
                 roi_feat_size=7,
-                num_classes=4,
+                num_classes=num_classes,
                 bbox_coder=dict(
                     type='DeltaXYWHBBoxCoder',
                     target_means=[0., 0., 0., 0.],
@@ -58,7 +59,7 @@ model = dict(
                 in_channels=256,
                 fc_out_channels=1024,
                 roi_feat_size=7,
-                num_classes=4,
+                num_classes=num_classes,
                 bbox_coder=dict(
                     type='DeltaXYWHBBoxCoder',
                     target_means=[0., 0., 0., 0.],
@@ -74,9 +75,9 @@ model = dict(
 )
 
 img_prefix = './data/urpc2020/images/'
+img_df_prefix = './data/dfui/images/'
 train_ann = './data/urpc2020/annotations/instances_train.json'
 test_ann = './data/urpc2020/annotations/instances_test.json'
-img_df_prefix = './data/dfui/images'
 classes = ('echinus', 'holothurian',  'scallop', 'starfish')
 
 img_norm_cfg = dict(
