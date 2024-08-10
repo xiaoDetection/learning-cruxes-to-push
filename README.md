@@ -41,17 +41,17 @@ We use Cityscapes as the detection-favored image set for both rainy and foggy sc
 ### Foggy Scene (Foggy-Cityscapes)
 |Method|Backbone|Pretrain|$AP$|$AP_{50}$|$AP_{75}$|Model|
 |:-|:-|:-|:-|:-|:-|:-|
-|LCP-50|ResNet50||29.0|46.6|30.2|
+|LCP-50|ResNet50|[cascade_rcnn_r50_city]()|29.0|46.6|30.2|[lcp_r50_foggy_city]()|
 
 ### Rainy Scene (Rainy-Cityscapes)
 |Method|Backbone|Pretrain|$AP$|$AP_{50}$|$AP_{75}$|Model|
 |:-|:-|:-|:-|:-|:-|:-|
-|LCP-50|ResNet50||27.6|45.9|27.9|
+|LCP-50|ResNet50|[cascade_rcnn_r50_city]()|27.6|45.9|27.9|[lcp_r50_rainy_city]()|
 
 ### Underwater Scene (URP2020)
 |Method|Backbone|Pretrain|$AP$|$AP_{50}$|$AP_{75}$|Model|
 |:-|:-|:-|:-|:-|:-|:-|
-|LCP-50|ResNet50||47.8|81.8|50.3|
+|LCP-50|ResNet50|[cascade_rcnn_r50_dfui]()|47.8|81.8|50.3|[lcp_r50_urpc]()|
 
 ## Usage
 ### Installing
@@ -126,7 +126,7 @@ python tools/train.py \
 The results will be saved in `work_dirs/lcp_r50_urpc`. 
 
 ### Training on a custom dataset
-Please convert your labels into COCO format and place your annotations and images into `data/` folder accoriding to the structure described [above](###Data_Preperation).
+Please convert your labels into COCO format and place your annotations and images into `data/` folder accoriding to the structure described [above](#data-preperation).
 
 Then, in the config file, modify `num_classes`, `img_prefix`, `img_df_prefix`, `train_ann`, `test_ann` and `classes` according to your dataset.
 - `num_classes` is the number of classes in your dataset.
