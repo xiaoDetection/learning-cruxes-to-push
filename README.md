@@ -31,9 +31,10 @@ We use URPC2020, Foggy-Cityscapes and Rainy-Cityscapes as low-quality sets to ev
 
 We use Cityscapes as the detection-favored image set for both rainy and foggy scenes. For the underwater scene, we use DFUI as the detection-favored image set.
 
-- The URPC2020 dataset can be downloaded from [here]().
-- The DFUI dataset can be downloaded from [here]().
-- The images and annotations of synthesized Rainy-Cityscapes can be downloaded from [here]() (Foggy-Cityscapes also uses these annotations).
+- The URPC2020 dataset can be downloaded from [here](https://github.com/xiaoDetection/learning-cruxes-to-push/releases/download/release_datasets/urpc2020.zip).
+- The DFUI dataset can be downloaded from [here](https://github.com/xiaoDetection/learning-cruxes-to-push/releases/download/release_datasets/dfui.zip).
+- The images and annotations of synthesized Rainy-Cityscapes can be downloaded from [here](https://github.com/xiaoDetection/learning-cruxes-to-push/releases/download/release_datasets/rainy_cityscapes.zip).
+- The Foggy-Cityscapes and Cityscapes images can be downloaded from their [official website](https://www.cityscapes-dataset.com/). (We use the same annotations as Rainy-Cityscapes)
 
 
 ![fig3](./assets/fig3.jpg)
@@ -123,7 +124,7 @@ python tools/train.py \
     configs/lcp_r50_urpc.py
 ```
 
-The results will be saved in `work_dirs/lcp_r50_urpc`. 
+The results will be saved in `work_dirs/lcp_r50_urpc/`. 
 
 ### Training on a custom dataset
 Please convert your labels into COCO format and place your annotations and images into `data/` folder accoriding to the structure described [above](#data-preperation).
@@ -141,12 +142,12 @@ python tools/train.py \
     YOUR_CONFIG_FILE.py
 ```
 
-The results will be saved in `work_dirs/YOUR_CONFIG_FILE`.
+The results will be saved in `work_dirs/YOUR_CONFIG_FILE/`.
 
 **Notes:**
 - Config files of other scenes can be found in [configs/](configs/).
 - Other models can be found in section [Models and Results](#models-and-results).
-- For more information (e.g., about training on a custom dataset or modifying models), please refer to [MMDetection's documentation](https://mmdetection.readthedocs.io/en/v2.28.2/).
+- For more information (e.g., about modifying runtime settings or modifying models), please refer to [MMDetection's documentation](https://mmdetection.readthedocs.io/en/v2.28.2/).
 
 ## Citation
 ```
