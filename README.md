@@ -42,17 +42,17 @@ We use Cityscapes as the detection-favored image set for both rainy and foggy sc
 ### Foggy Scene (Foggy-Cityscapes)
 |Method|Backbone|Pretrain|$AP$|$AP_{50}$|$AP_{75}$|Model|
 |:-|:-|:-|:-|:-|:-|:-|
-|LCP-50|ResNet50|[cascade_rcnn_r50_city]()|29.0|46.6|30.2|[lcp_r50_foggy_city]()|
+|LCP-50|ResNet50|[cascade_rcnn_r50_city](https://github.com/xiaoDetection/learning-cruxes-to-push/releases/download/release_models/cascade_rcnn_r50_city.pth)|29.0|46.6|30.2|[lcp_r50_foggy_city](https://github.com/xiaoDetection/learning-cruxes-to-push/releases/download/release_models/lcp_r50_foggy_city.pth)|
 
 ### Rainy Scene (Rainy-Cityscapes)
 |Method|Backbone|Pretrain|$AP$|$AP_{50}$|$AP_{75}$|Model|
 |:-|:-|:-|:-|:-|:-|:-|
-|LCP-50|ResNet50|[cascade_rcnn_r50_city]()|27.6|45.9|27.9|[lcp_r50_rainy_city]()|
+|LCP-50|ResNet50|[cascade_rcnn_r50_city](https://github.com/xiaoDetection/learning-cruxes-to-push/releases/download/release_models/cascade_rcnn_r50_city.pth)|27.6|45.9|27.9|[lcp_r50_rainy_city](https://github.com/xiaoDetection/learning-cruxes-to-push/releases/download/release_models/lcp_r50_rainy_city.pth)|
 
 ### Underwater Scene (URP2020)
 |Method|Backbone|Pretrain|$AP$|$AP_{50}$|$AP_{75}$|Model|
 |:-|:-|:-|:-|:-|:-|:-|
-|LCP-50|ResNet50|[cascade_rcnn_r50_dfui]()|47.8|81.8|50.3|[lcp_r50_urpc]()|
+|LCP-50|ResNet50|[cascade_rcnn_r50_dfui](https://github.com/xiaoDetection/learning-cruxes-to-push/releases/download/release_models/cascade_rcnn_r50_dfui.pth)|47.8|81.8|50.3|[lcp_r50_urpc](https://github.com/xiaoDetection/learning-cruxes-to-push/releases/download/release_models/lcp_r50_urpc.pth)|
 
 ## Usage
 ### Installing
@@ -101,7 +101,7 @@ Here we take `LCP-50` on URPC2020 as an example.
 First download our checkpoint file to `checkpoints/lcp_r50_urpc.pth`:
 ```shell
 mkdir checkpoints
-wget -P ./checkpoints/ https://
+wget -P ./checkpoints/ https://github.com/xiaoDetection/learning-cruxes-to-push/releases/download/release_models/lcp_r50_urpc.pth
 ```
 Then test our model (set '--cfg-options' to avoid loading pre-trained weights):
 ```shell
