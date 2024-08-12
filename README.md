@@ -34,7 +34,7 @@ We use Cityscapes as the detection-favored image set for both rainy and foggy sc
 - The URPC2020 dataset can be downloaded from [here](https://github.com/xiaoDetection/learning-cruxes-to-push/releases/download/release_datasets/urpc2020.zip).
 - The DFUI dataset can be downloaded from [here](https://github.com/xiaoDetection/learning-cruxes-to-push/releases/download/release_datasets/dfui.zip).
 - The images and annotations of synthesized Rainy-Cityscapes can be downloaded from [here](https://github.com/xiaoDetection/learning-cruxes-to-push/releases/download/release_datasets/rainy_cityscapes.zip).
-- The Foggy-Cityscapes and Cityscapes images can be downloaded from their [official website](https://www.cityscapes-dataset.com/). (We use the same annotations as Rainy-Cityscapes)
+- The images of Foggy-Cityscapes and Cityscapes can be downloaded from their [official website](https://www.cityscapes-dataset.com/). (We use the same annotations as Rainy-Cityscapes)
 
 
 ![fig3](./assets/fig3.jpg)
@@ -112,11 +112,11 @@ python tools/test.py \
     --cfg-options model.init_cfg=None
 ```
 ### Training
-Here we take a training on the  underwater scene as an example.
+Here we take a training on the underwater scene as an example.
 
 Fist download our pre-trained model:
 ```shell
-wget -P ./checkpoints/ http://
+wget -P ./checkpoints/ http://https://github.com/xiaoDetection/learning-cruxes-to-push/releases/download/release_models/cascade_rcnn_r50_dfui.pth
 ```
 Then train a model:
 ```shell
